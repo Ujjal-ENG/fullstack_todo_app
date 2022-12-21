@@ -38,6 +38,20 @@ function App() {
     setTodos((todos) => todos.filter((todo) => todo._id !== dataRes._id));
   };
 
+  const addTodo = async () => {
+    const data = await fetch(API_BASE + "/todo/new", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: setTodo,
+      }),
+    }).then((res) => res.json());
+    setTodos([...todos, data]);
+    setPopupActive(false);
+  };
+
   return (
     <div className="App">
       <h1>WelCome to Ujjal</h1>
@@ -73,6 +87,15 @@ function App() {
           <div className="closePopup">X</div>
           <div className="content">
             <h3>Add Task</h3>
+            <input
+              type="text"
+              className="add-todo-input"
+              onChange={(e) => setNewTodo(e.target.value)}
+              value={setTodo}
+            />
+            <div className="button" onClick={addTodo}>
+              Create Your Task Here
+            </div>
           </div>
         </div>
       ) : (
