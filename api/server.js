@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+const Todo = require("./models/Todo");
+
 const app = express();
 
 app.use(express.json());
@@ -22,8 +24,6 @@ mongoose
     console.log("Error Is: ", error);
   });
 
-const Todo = require("./models/Todo");
-
 app.get("/todos", async (req, res) => {
   const todos = await Todo.find();
 
@@ -41,11 +41,16 @@ app.post("/todo/new", (req, res) => {
 
 app.delete("/todo/delete/:id", async (req, res) => {
   const result = await Todo.findByIdAndDelete(req.params.id);
-
   res.json(result);
 });
 
+app.patch("/todo/complete/:id", async (req, res) => {
+  const todo = await Todo.findById(req.params.id);
+  todo.complete = !todo.complete;
+  todo.save();
 
+  res.json(todo);
+});
 
 app.listen(3001, () => {
   console.log(`Server is running at http://localhost:${3001}`);
