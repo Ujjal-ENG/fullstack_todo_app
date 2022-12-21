@@ -9,10 +9,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("<h1>This is the Home page</h1>");
-});
-
 mongoose
   .connect("mongodb://localhost:27017/mern-todo", {
     useUnifiedTopology: true,
@@ -44,7 +40,7 @@ app.delete("/todo/delete/:id", async (req, res) => {
   res.json(result);
 });
 
-app.patch("/todo/complete/:id", async (req, res) => {
+app.get("/todo/complete/:id", async (req, res) => {
   const todo = await Todo.findById(req.params.id);
   todo.complete = !todo.complete;
   todo.save();
