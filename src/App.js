@@ -50,13 +50,13 @@ function App() {
     }).then((res) => res.json());
     setTodos([...todos, data]);
     setPopupActive(false);
-    setNewTodo("")
+    setNewTodo("");
   };
-
 
   return (
     <div className="App">
-      <h1>WelCome to Ujjal</h1>
+      <h1>Setup your Daily Todo Here...</h1>
+      <h2>Developed By Ujjal Kumar Roy</h2>
       <h4>Your Task</h4>
 
       <div className="todos">
