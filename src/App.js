@@ -50,7 +50,9 @@ function App() {
     }).then((res) => res.json());
     setTodos([...todos, data]);
     setPopupActive(false);
+    setNewTodo("")
   };
+
 
   return (
     <div className="App">
@@ -83,7 +85,7 @@ function App() {
       </div>
 
       {popupActive ? (
-        <div className="pop">
+        <div className="popup">
           <div className="closePopup">X</div>
           <div className="content">
             <h3>Add Task</h3>
