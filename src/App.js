@@ -58,6 +58,26 @@ function App() {
           </div>
         ))}
       </div>
+
+      <div
+        className="addPopup"
+        onClick={() => {
+          setPopupActive(!popupActive);
+        }}
+      >
+        +
+      </div>
+
+      {popupActive ? (
+        <div className="pop">
+          <div className="closePopup">X</div>
+          <div className="content">
+            <h3>Add Task</h3>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

@@ -90,8 +90,32 @@ h4 {
   height: 24px;
   border-radius: 50%;
   background-color: red;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.addPopup {
+  color: var(--light);
+  background-image: linear-gradient(
+    to bottom right,
+    var(--primary),
+    var(--secondary)
+  );
+
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 45px;
+  font-weight: bold;
+  cursor: pointer;
 }
